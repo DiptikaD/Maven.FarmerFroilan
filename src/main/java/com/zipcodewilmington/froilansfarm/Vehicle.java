@@ -1,6 +1,6 @@
 package com.zipcodewilmington.froilansfarm;
 
-public class Vehicle {
+public interface Vehicle {
 
-
+    boolean operate();
 }
