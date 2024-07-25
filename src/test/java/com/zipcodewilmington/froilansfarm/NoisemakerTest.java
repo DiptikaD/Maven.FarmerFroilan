@@ -16,4 +16,10 @@ public class NoisemakerTest {
         Animal person = new Person();
         Assert.assertEquals("Hi", person.makeNoise());
     }
+
+    @Test
+    public void makeNoiseChickenTest(){
+        Animal chicken = new Chicken();
+        Assert.assertEquals("CluckCluck", chicken.makeNoise());
+    }
 }
