@@ -1,9 +1,15 @@
 package com.zipcodewilmington.froilansfarm;
 
-public class Horse extends Animal implements Eater, Noisemaker {
+import java.util.ArrayList;
+
+public class Horse extends Animal implements Eater, Noisemaker, Rideable{
 
     public Horse() {
         super();
+    }
+
+    public Horse(ArrayList<Edible> stomach) {
+        super(stomach);
     }
 
     @Override
@@ -14,5 +20,15 @@ public class Horse extends Animal implements Eater, Noisemaker {
     @Override
     public void eat(Edible Edible) {
         stomach.add(Edible);
+    }
+
+    @Override
+    public boolean mount(Rider Rider) {
+        return false;
+    }
+
+    @Override
+    public boolean dismount(Rider Rider) {
+        return false;
     }
 }
