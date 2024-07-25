@@ -8,6 +8,6 @@ public class NoisemakerTest {
     @Test
     public void makeNoiseTest(){
         Horse horse = new Horse();
-        Assert.assertEquals("", horse.makeNoise());
+        Assert.assertEquals("Neigh", horse.makeNoise());
     }
 }
