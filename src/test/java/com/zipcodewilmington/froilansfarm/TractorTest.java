@@ -24,18 +24,20 @@ public class TractorTest {
     @Test
     public void harvestedEarCornTest(){
         Tractor tractor = new Tractor();
-        EarCorn earCorn = new EarCorn();
-        tractor.harvest(earCorn);
-        tractor.harvest(earCorn);
+        CornStalk cornStalk = new CornStalk();
+        cornStalk.fertilize();
+        tractor.harvest(cornStalk.yield());
+        tractor.harvest(cornStalk.yield());
         Assert.assertEquals(2, tractor.harvested.size());
     }
 
     @Test
     public void harvestedTomatoTest(){
         Tractor tractor = new Tractor();
-        Tomato tomato = new Tomato();
-        tractor.harvest(tomato);
-        tractor.harvest(tomato);
+        TomatoStalk tomatoStalk = new TomatoStalk();
+        tomatoStalk.fertilize();
+        tractor.harvest(tomatoStalk.yield());
+        tractor.harvest(tomatoStalk.yield());
         Assert.assertEquals(2, tractor.harvested.size());
     }
 }
