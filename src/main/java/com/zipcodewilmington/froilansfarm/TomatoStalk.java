@@ -1,4 +1,4 @@
 package com.zipcodewilmington.froilansfarm;
 
-public interface Edible extends Produce {
+public class TomatoStalk extends Crop {
 }
