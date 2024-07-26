@@ -22,4 +22,16 @@ public class NoisemakerTest {
         Animal chicken = new Chicken();
         Assert.assertEquals("CluckCluck", chicken.makeNoise());
     }
+
+    @Test
+    public void makeNoiseCropDusterTest(){
+        FarmVehicle cropDuster = new CropDuster();
+        Assert.assertEquals("Crop Crop", cropDuster.makeNoise());
+    }
+
+    @Test
+    public void makeNoiseTractorTest(){
+        FarmVehicle tractor = new Tractor();
+        Assert.assertEquals("Bada Boom Bada Bing", tractor.makeNoise());
+    }
 }
