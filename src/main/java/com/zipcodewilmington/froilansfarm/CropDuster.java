@@ -11,4 +11,10 @@ public class CropDuster extends FarmVehicle implements AirCraft  {
     public Boolean fertized(Crop crop) {
         return true;
     }
+
+    @Override
+    public String makeNoise() {
+        return "Crop Crop";
+
+    }
 }

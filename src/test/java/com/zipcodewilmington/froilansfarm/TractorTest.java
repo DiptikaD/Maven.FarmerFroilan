@@ -16,4 +16,13 @@ public class TractorTest {
 
 
     }
+
+    @Test
+    public void makeNoiseTest(){
+        Tractor tractor = new Tractor();
+        String makeNoise = "Bada Boom Bada Bing";
+        tractor.makeNoise();
+
+        Assert.assertEquals(makeNoise,tractor.makeNoise());
+    }
 }

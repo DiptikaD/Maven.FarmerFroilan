@@ -5,4 +5,8 @@ public abstract class FarmVehicle implements Vehicle {
 
         return true;
     }
+
+    public String makeNoise() {
+        return "I'm farming";
+    }
 }
