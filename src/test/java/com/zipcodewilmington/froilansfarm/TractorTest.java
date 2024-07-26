@@ -22,11 +22,19 @@ public class TractorTest {
     }
 
     @Test
-    public void harvestedTest(){
+    public void harvestedEarCornTest(){
         Tractor tractor = new Tractor();
         EarCorn earCorn = new EarCorn();
-        Tomato tomato = new Tomato();
         tractor.harvest(earCorn);
+        tractor.harvest(earCorn);
+        Assert.assertEquals(2, tractor.harvested.size());
+    }
+
+    @Test
+    public void harvestedTomatoTest(){
+        Tractor tractor = new Tractor();
+        Tomato tomato = new Tomato();
+        tractor.harvest(tomato);
         tractor.harvest(tomato);
         Assert.assertEquals(2, tractor.harvested.size());
     }
