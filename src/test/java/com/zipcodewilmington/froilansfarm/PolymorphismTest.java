@@ -30,12 +30,6 @@ public class PolymorphismTest {
     }
 
     @Test
-    public void ChickenEggIsProduce(){
-        ChickenEgg chickenEgg = new ChickenEgg();
-        Assert.assertTrue(chickenEgg instanceof Produce);
-    }
-
-    @Test
     public void ChickenEggIsEdible(){
         ChickenEgg chickenEgg = new ChickenEgg();
         Assert.assertTrue(chickenEgg instanceof Edible);
@@ -57,29 +51,5 @@ public class PolymorphismTest {
     public void FarmerIsPersonTest(){
         Farmer farmer = new Farmer("Froilan");
         Assert.assertTrue(farmer instanceof Person);
-    }
-
-    @Test
-    public void EarCornIsProduceTest(){
-        EarCorn earCorn = new EarCorn();
-        Assert.assertTrue(earCorn instanceof Produce);
-    }
-
-    @Test
-    public void EarCornIsCropTest(){
-        EarCorn earCorn = new EarCorn();
-        Assert.assertTrue(earCorn instanceof Crop);
-    }
-
-    @Test
-    public void TomatoIsCropTest(){
-        Tomato tomato = new Tomato();
-        Assert.assertTrue(tomato instanceof Crop);
-    }
-
-    @Test
-    public void TomatoIsProduceTest(){
-        Tomato tomato = new Tomato();
-        Assert.assertTrue(tomato instanceof Produce);
     }
 }

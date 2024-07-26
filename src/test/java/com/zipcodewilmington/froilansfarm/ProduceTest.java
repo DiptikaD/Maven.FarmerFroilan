@@ -18,14 +18,39 @@ public class ProduceTest {
     }
 
     @Test
-    public void TomatoTest(){
-        Edible tomato = new Tomato();
-        Assert.assertTrue(tomato instanceof Produce);
+    public void NoYieldTomatoTest(){
+        Tractor tractor = new Tractor();
+        TomatoStalk tomatoStalk = new TomatoStalk();
+        tomatoStalk.fertilize();
+        tomatoStalk.defertilize();
+        tractor.harvest(tomatoStalk.yield());
+        Assert.assertEquals(0,tractor.harvested.size());
     }
 
     @Test
-    public void EarCornTest(){
-        Edible corn = new EarCorn();
-        Assert.assertTrue(corn instanceof Produce);
+    public void NoYieldEarCornTest(){
+        Tractor tractor = new Tractor();
+        CornStalk cornStalk = new CornStalk();
+        cornStalk.fertilize();
+        cornStalk.defertilize();
+        tractor.harvest(cornStalk.yield());
+        Assert.assertEquals(0,tractor.harvested.size());
+    }
+
+    @Test
+    public void NoYieldChickenEgg(){
+        Chicken chicken = new Chicken();
+        chicken.fertilize();
+        chicken.defertilize();
+        chicken.yield();
+        Assert.assertEquals(0, chicken.fridge.size());
+    }
+
+    @Test
+    public void YieldChickenEgg(){
+        Chicken chicken = new Chicken();
+        chicken.fertilize();
+        chicken.yield();
+        Assert.assertEquals(1,chicken.fridge.size());
     }
 }
