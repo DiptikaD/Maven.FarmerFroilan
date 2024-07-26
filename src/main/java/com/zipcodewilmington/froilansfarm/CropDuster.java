@@ -8,7 +8,7 @@ public class CropDuster extends FarmVehicle implements AirCraft  {
         return "Airborne";
     }
 
-    public Boolean fertized(Crop crop) {
+    public Boolean fertized(CropRow crop) {
         return true;
     }
 

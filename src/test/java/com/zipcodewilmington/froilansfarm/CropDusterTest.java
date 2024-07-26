@@ -36,16 +36,17 @@ public class CropDusterTest {
         Assert.assertEquals(makeNoise,cropDuster.makeNoise());
     }
 
-//    @Test
-//    public void fertilizedTest(){
-//     CropDuster cropDuster = new CropDuster() ;
-//     Produce produce = new Crop();
-//
-//     cropDuster.fertized(crop);
-//
-//     Assert.assertTrue(cropDuster.fertized(crop));
-//
-//    }
+    @Test
+    public void fertilizedTest(){
+     CropDuster cropDuster = new CropDuster() ;
+     CropRow cropRow = new CropRow();
+
+     cropDuster.fertized(cropRow);
+
+     Assert.assertTrue(cropDuster.fertized(cropRow));
+
+    }
+
 
 
 
