@@ -24,11 +24,11 @@ public class Horse extends Animal implements Eater, Noisemaker, Rideable{
 
     @Override
     public boolean mount(Rider Rider) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean dismount(Rider Rider) {
-        return false;
+        return true;
     }
 }
