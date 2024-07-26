@@ -5,23 +5,13 @@ import org.junit.Test;
 
 public class VehicleTest {
 
-//
-//@Test
-//public void makeNoiseTest(){
-//    Vehicle vehicle = new Vehicle();
-//
-//    Assert.assertTrue("Kachow",vehicle.makeNoise());
-//
-//}
-@Test
-public void rideableMountTractorTest(){
-Vehicle tractor = new Tractor();
-Person person = new Person();
+    @Test
+    public void rideableMountTractorTest(){
+        Vehicle tractor = new Tractor();
+        Person person = new Person();
 
-Assert.assertTrue(tractor.mount(person));
-    
-
-}
+        Assert.assertTrue(tractor.mount(person));
+    }
 
     @Test
     public void rideableMountCropDustTest(){
@@ -29,7 +19,6 @@ Assert.assertTrue(tractor.mount(person));
         Person person = new Person();
 
         Assert.assertTrue(cropDuster.mount(person));
-
     }
 
     @Test
@@ -38,8 +27,6 @@ Assert.assertTrue(tractor.mount(person));
         Person person = new Person();
 
         Assert.assertTrue(tractor.dismount(person));
-
-
     }
 
     @Test
@@ -48,9 +35,5 @@ Assert.assertTrue(tractor.mount(person));
         Person person = new Person();
 
         Assert.assertTrue(cropDuster.dismount(person));
-
     }
-
-
-
 }
