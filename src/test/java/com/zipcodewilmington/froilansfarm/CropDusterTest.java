@@ -27,19 +27,19 @@ public class CropDusterTest {
 
     }
 
-//    @Test
-//    public void makeNoiseTest(){
-//        CropDuster cropDuster = new CropDuster();
-//        String makeNoise = "Crop Crop";
-//        cropDuster.makeNoise();
-//
-//        Assert.assertEquals(makeNoise,);
-//    }
+    @Test
+    public void makeNoiseTest(){
+        CropDuster cropDuster = new CropDuster();
+        String makeNoise = "Crop Crop";
+        cropDuster.makeNoise();
+
+        Assert.assertEquals(makeNoise,cropDuster.makeNoise());
+    }
 
 //    @Test
 //    public void fertilizedTest(){
 //     CropDuster cropDuster = new CropDuster() ;
-//     Crop crop = new Crop();
+//     Produce produce = new Crop();
 //
 //     cropDuster.fertized(crop);
 //
