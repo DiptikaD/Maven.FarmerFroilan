@@ -16,6 +16,6 @@ public class RideableTest {
     public void dismountHorseTest(){
         Farmer froilan = new Farmer("Froilan");
         Horse horse = new Horse();
-        Assert.assertTrue(horse.mount(froilan));
+        Assert.assertTrue(horse.dismount(froilan));
     }
 }
