@@ -8,4 +8,13 @@ public class Tractor extends FarmVehicle {
 
     }
 
+    @Override
+    public boolean mount(Person person) {
+        return true;
+    }
+
+    @Override
+    public boolean dismount(Person person) {
+        return true;
+    }
 }
