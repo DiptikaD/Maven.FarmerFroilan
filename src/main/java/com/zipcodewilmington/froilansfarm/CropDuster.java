@@ -19,12 +19,14 @@ public class CropDuster extends FarmVehicle implements AirCraft  {
     }
 
     @Override
-    public boolean mount(Person person) {
+    public boolean mount(Rider Rider) {
+        riders.add(Rider);
         return true;
     }
 
     @Override
-    public boolean dismount(Person person) {
+    public boolean dismount(Rider Rider) {
+        riders.remove(Rider);
         return true;
     }
 }

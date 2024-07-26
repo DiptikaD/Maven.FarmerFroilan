@@ -6,7 +6,6 @@ import org.junit.Test;
 public class CropDusterTest {
 
 
-
     @Test
     public void operateTest(){
         FarmVehicle cropDuster = new CropDuster();
@@ -46,9 +45,4 @@ public class CropDusterTest {
      Assert.assertTrue(cropDuster.fertized(cropRow));
 
     }
-
-
-
-
-
 }
