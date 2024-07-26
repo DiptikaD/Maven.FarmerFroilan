@@ -1,10 +1,6 @@
 package com.zipcodewilmington.froilansfarm;
 
-public interface Vehicle {
+public interface Vehicle extends Rideable {
 
     boolean operate();
-
-    boolean mount(Person person);
-
-    boolean dismount(Person person);
 }
