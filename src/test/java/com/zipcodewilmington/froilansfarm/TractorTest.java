@@ -40,4 +40,5 @@ public class TractorTest {
         tractor.harvest(tomatoStalk.yield());
         Assert.assertEquals(2, tractor.harvested.size());
     }
+
 }
