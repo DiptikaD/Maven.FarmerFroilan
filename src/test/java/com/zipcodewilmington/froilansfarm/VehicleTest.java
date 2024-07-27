@@ -11,6 +11,7 @@ public class VehicleTest {
         Person person = new Person();
 
         Assert.assertTrue(tractor.mount(person));
+        tractor.dismount(person);
     }
 
     @Test
@@ -19,6 +20,7 @@ public class VehicleTest {
         Person person = new Person();
 
         Assert.assertTrue(cropDuster.mount(person));
+        cropDuster.dismount(person);
     }
 
     @Test
