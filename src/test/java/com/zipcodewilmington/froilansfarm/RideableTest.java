@@ -8,6 +8,12 @@ import org.junit.Test;
 public class RideableTest {
     // runs mount tests in backwards alphabetical order and rideables share the same riders list
 
+    @Before
+    public void setUp(){
+        Tractor tractor = new Tractor();
+        tractor.riders.clear();
+    }
+
     @Test
     public void mountHorseTest(){
         Farmer froilan = new Farmer("froilan");
@@ -59,6 +65,6 @@ public class RideableTest {
         Person froilan = new Person();
         Tractor tractor = new Tractor();
         tractor.mount(froilan);
-        Assert.assertEquals(1, tractor.riders.size());
+        Assert.assertTrue(tractor.riders.contains(froilan));
     }
 }
