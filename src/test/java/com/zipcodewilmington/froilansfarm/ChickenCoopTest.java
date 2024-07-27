@@ -1,9 +1,7 @@
 package com.zipcodewilmington.froilansfarm;
-
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 
 public class ChickenCoopTest {
 
@@ -11,17 +9,15 @@ public class ChickenCoopTest {
     public void addChickenCoop (){
         Chicken chicken = new Chicken();
         ChickenCoop coop = new ChickenCoop();
-        ArrayList<Chicken> expected = new ArrayList<>();
-        expected.add(chicken);
         coop.add(chicken);
-        Assert.assertEquals(expected, coop.getChickens());
+
+        Assert.assertEquals(coop.get(0), chicken);
     }
 
     @Test
-    public void setChickens(){
+    public void emptyConstructorChickens(){
         ChickenCoop coop = new ChickenCoop();
-        ArrayList<Chicken> expected = new ArrayList<>();
-        coop.setChickens(expected);
-        Assert.assertEquals(expected, coop.getChickens());
+
+        Assert.assertEquals(0, coop.size());
     }
 }
