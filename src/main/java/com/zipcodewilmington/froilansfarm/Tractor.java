@@ -6,7 +6,7 @@ public class Tractor extends FarmVehicle implements Rideable {
     ArrayList<Crop> harvested = new ArrayList<>();
 
     public void harvest(Crop crop){
-        if (crop != null) {
+        if (crop != null && crop.isFertilized) {
             harvested.add(crop);
         }
     }
