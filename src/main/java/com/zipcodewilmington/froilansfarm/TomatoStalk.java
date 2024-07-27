@@ -1,7 +1,7 @@
 package com.zipcodewilmington.froilansfarm;
 
 public class TomatoStalk extends Crop implements Produce<Tomato> {
-    boolean isFertilized = false;
+    boolean isFertilized;
 
     @Override
     public boolean fertilize() {

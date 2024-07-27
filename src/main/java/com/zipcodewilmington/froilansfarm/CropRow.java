@@ -10,4 +10,9 @@ public class CropRow extends ArrayList<Crop> {
         this.addAll(crops);
     }
 
+    public void fertilize() {
+        for (Crop crop : this){
+            crop.fertilize();
+        }
+    }
 }

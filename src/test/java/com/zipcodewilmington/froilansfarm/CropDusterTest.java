@@ -40,9 +40,44 @@ public class CropDusterTest {
      CropDuster cropDuster = new CropDuster() ;
      CropRow cropRow = new CropRow();
 
-     cropDuster.fertized(cropRow);
+     cropDuster.fertilize(cropRow);
 
-     Assert.assertTrue(cropDuster.fertized(cropRow));
+     Assert.assertTrue(cropDuster.fertilize(cropRow));
 
+    }
+
+    @Test
+    public void fertilizeCropRowTest(){
+        EarCorn earCorn = new EarCorn();
+        CropRow cropRow = new CropRow();
+        Tractor tractor = new Tractor();
+        cropRow.add(earCorn);
+        cropRow.add(earCorn);
+        cropRow.add(earCorn);
+        CropDuster cropDuster = new CropDuster();
+        cropDuster.fertilize(cropRow);
+        for (Crop c : cropRow){
+            tractor.harvest(c);
+        }
+        Assert.assertEquals(3, tractor.harvested.size());
+    }
+
+    @Test
+    public void defertilizeCropRowTest(){
+        EarCorn earCorn = new EarCorn();
+        CropRow cropRow = new CropRow();
+        Tractor tractor = new Tractor();
+        cropRow.add(earCorn);
+        cropRow.add(earCorn);
+        cropRow.add(earCorn);
+        CropDuster cropDuster = new CropDuster();
+        cropDuster.fertilize(cropRow);
+        for (Crop c : cropRow){
+            c.defertilize();
+        }
+        for (Crop c : cropRow){
+            tractor.harvest(c);
+        }
+        Assert.assertEquals(0, tractor.harvested.size());
     }
 }
