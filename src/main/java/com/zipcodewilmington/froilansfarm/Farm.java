@@ -3,43 +3,43 @@ package com.zipcodewilmington.froilansfarm;
 import java.util.ArrayList;
 
 public class Farm {
-    private ArrayList<ChickenCoop> chickenCoops;
-    private ArrayList<FarmHouse> farmHouses;
-    private ArrayList<Stable> stables;
+    private ChickenCoop chickenCoops;
+    private FarmHouse farmHouses;
+    private Stable stables;
 
     public Farm (){
-        chickenCoops = new ArrayList<ChickenCoop>();
-        stables = new ArrayList<Stable>();
-        farmHouses = new ArrayList<FarmHouse>();
+        chickenCoops = new ChickenCoop();
+        stables = new Stable();
+        farmHouses = new FarmHouse();
     }
 
-    public Farm(ArrayList<ChickenCoop> ChickenCoop, ArrayList<FarmHouse> FarmHouse, ArrayList<Stable> Stable){
-        this.chickenCoops = ChickenCoop;
-        this.farmHouses = FarmHouse;
-        this.stables = Stable;
+    public Farm(ChickenCoop chickenCoop, FarmHouse farmHouse, Stable stable){
+        this.chickenCoops = chickenCoop;
+        this.farmHouses = farmHouse;
+        this.stables = stable;
     }
 
-    public ArrayList<ChickenCoop> getChickenCoop() {
+    public ChickenCoop getChickenCoop() {
         return chickenCoops;
     }
 
-    public void setChickenCoop(ArrayList<ChickenCoop> chickenCoop) {
+    public void setChickenCoop(ChickenCoop chickenCoop) {
         chickenCoops = chickenCoop;
     }
 
-    public ArrayList<FarmHouse> getFarmHouse() {
+    public FarmHouse getFarmHouse() {
         return farmHouses;
     }
 
-    public void setFarmHouse(ArrayList<FarmHouse> farmHouse) {
+    public void setFarmHouse(FarmHouse farmHouse) {
         farmHouses = farmHouse;
     }
 
-    public ArrayList<Stable> getStable() {
+    public Stable getStable() {
         return stables;
     }
 
-    public void setStable(ArrayList<Stable> stable) {
+    public void setStable(Stable stable) {
         stables = stable;
     }
 }
