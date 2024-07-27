@@ -3,20 +3,52 @@ package com.zipcodewilmington.froilansfarm;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class FarmFactoryTest {
 
     @Test
     public void createStableTest(){
         Farm farm = new Farm();
         FarmFactory farmFactory = new FarmFactory();
-        farmFactory.createStable();
+        farm.stables.add(farmFactory.createStable());
+
+        Assert.assertEquals(1, farm.stables.size());
+    }
+
+    @Test
+    public void createStablesTest(){
+        Farm farm = new Farm();
+        FarmFactory farmFactory = new FarmFactory();
+        farm.stables.add(farmFactory.createStable());
+        farm.stables.add(farmFactory.createStable());
+        farm.stables.add(farmFactory.createStable());
+        farm.stables.add(farmFactory.createStable());
+        farm.stables.add(farmFactory.createStable());
+
+        Assert.assertEquals(5, farm.stables.size());
     }
 
     @Test
     public void createChickenCoopTest(){
         Farm farm = new Farm();
         FarmFactory farmFactory = new FarmFactory();
-        farmFactory.createChickenCoop();
+        farm.chickenCoops.add(farmFactory.createChickenCoop());
+
+        Assert.assertEquals(1, farm.chickenCoops.size());
+    }
+
+    @Test
+    public void createChickenCoopsTest(){
+        Farm farm = new Farm();
+        FarmFactory farmFactory = new FarmFactory();
+        farm.chickenCoops.add(farmFactory.createChickenCoop());
+        farm.chickenCoops.add(farmFactory.createChickenCoop());
+        farm.chickenCoops.add(farmFactory.createChickenCoop());
+        farm.chickenCoops.add(farmFactory.createChickenCoop());
+        farm.chickenCoops.add(farmFactory.createChickenCoop());
+
+        Assert.assertEquals(5, farm.chickenCoops.size());
     }
 
     @Test
