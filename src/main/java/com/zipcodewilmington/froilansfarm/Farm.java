@@ -3,14 +3,14 @@ package com.zipcodewilmington.froilansfarm;
 import java.util.ArrayList;
 
 public class Farm {
-    private ArrayList<ChickenCoop> chickenCoops;
-    private ArrayList<FarmHouse> farmHouses;
-    private ArrayList<Stable> stables;
+    ArrayList<ChickenCoop> chickenCoops;
+    ArrayList<FarmHouse> farmHouses;
+    ArrayList<Stable> stables;
 
     public Farm (){
-        chickenCoops = new ArrayList<ChickenCoop>();
-        stables = new ArrayList<Stable>();
-        farmHouses = new ArrayList<FarmHouse>();
+        this.chickenCoops = new ArrayList<ChickenCoop>();
+        this.stables = new ArrayList<Stable>();
+        this.farmHouses = new ArrayList<FarmHouse>();
 }
 
 public Farm(ArrayList<ChickenCoop> ChickenCoop, ArrayList<FarmHouse> FarmHouse, ArrayList<Stable> Stable){
