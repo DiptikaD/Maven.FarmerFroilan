@@ -17,8 +17,11 @@ public class FarmerTest {
     @Test
     public void farmerPlantCrops(){
         Farmer farmer = new Farmer("Donald");
-        Tomato tomato = new Tomato();
+        TomatoStalk tomato = new TomatoStalk();
         CropRow cropRow = new CropRow();
+        cropRow.add(tomato);
+        cropRow.add(tomato);
+        cropRow.add(tomato);
 
 
         Assert.assertTrue(farmer.plant(tomato, cropRow));

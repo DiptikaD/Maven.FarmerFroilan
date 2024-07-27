@@ -7,12 +7,19 @@ import org.junit.Test;
 
 public class RideableTest {
     // runs mount tests in backwards alphabetical order and rideables share the same riders list
+//
+//    @Before
+//    public void setUp(){
+//        Tractor tractor = new Tractor();
+//        tractor.riders.clear();
+//    }
 
     @Test
     public void mountHorseTest(){
         Farmer froilan = new Farmer("froilan");
         Horse horse = new Horse();
         Assert.assertTrue(horse.mount(froilan));
+        horse.dismount(froilan);
     }
 
     @Test
@@ -28,6 +35,7 @@ public class RideableTest {
         Horse horse = new Horse();
         horse.mount(froilan);
         Assert.assertTrue(horse.riders.contains(froilan));
+        horse.dismount(froilan);
     }
 
     @Test
@@ -44,6 +52,7 @@ public class RideableTest {
         Farmer froilan = new Farmer("froilan");
         Tractor tractor = new Tractor();
         Assert.assertTrue(tractor.mount(froilan));
+        tractor.dismount(froilan);
     }
 
     @Test
@@ -60,5 +69,6 @@ public class RideableTest {
         Tractor tractor = new Tractor();
         tractor.mount(froilan);
         Assert.assertEquals(1, tractor.riders.size());
+        tractor.dismount(froilan);
     }
 }
