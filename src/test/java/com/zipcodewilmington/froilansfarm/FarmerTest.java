@@ -24,7 +24,7 @@ public class FarmerTest {
         cropRow.add(tomato);
 
 
-        Assert.assertTrue(farmer.plant(tomato, cropRow));
+        Assert.assertTrue(farmer.plant(tomato, cropRow, 1));
 
     }
 }

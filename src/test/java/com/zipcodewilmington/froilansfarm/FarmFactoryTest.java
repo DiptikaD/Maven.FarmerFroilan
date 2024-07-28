@@ -209,4 +209,22 @@ public class FarmFactoryTest {
 
         Assert.assertEquals(9, farmHouse.fridge.size());
     }
+
+    @Test
+    public void createPotatoTest(){
+        FarmHouse farmHouse = new FarmHouse();
+        FarmFactory farmFactory = new FarmFactory();
+        farmHouse.fridge.add(farmFactory.createPotato());
+
+        Assert.assertEquals(1, farmHouse.fridge.size());
+    }
+
+    @Test
+    public void createPotatoStalk(){
+        FarmFactory farmFactory = new FarmFactory();
+        CropRow cropRow = farmFactory.createCropRow();
+        cropRow.add(farmFactory.createPotatoStalk());
+
+        Assert.assertEquals(1, cropRow.size());
+    }
 }

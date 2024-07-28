@@ -21,8 +21,4 @@ public abstract class Animal implements Noisemaker, Eater{
         this.stomach = stomach;
     }
 
-    @Override
-    public String makeNoise() {
-        return "";
-    }
 }

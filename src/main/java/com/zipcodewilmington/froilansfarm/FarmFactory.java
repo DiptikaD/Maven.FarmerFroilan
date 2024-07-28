@@ -23,6 +23,8 @@ public class FarmFactory {
         return new TomatoStalk();
     }
 
+    public PotatoStalk createPotatoStalk(){return new PotatoStalk();}
+
     public ChickenEgg createChickenEgg(){
         return new ChickenEgg();
     }
@@ -34,4 +36,7 @@ public class FarmFactory {
     public EarCorn createEarCorn(){
         return new EarCorn();
     }
+
+    public Potato createPotato(){return new Potato();}
+
 }
