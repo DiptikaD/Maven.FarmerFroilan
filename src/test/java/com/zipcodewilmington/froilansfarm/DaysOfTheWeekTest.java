@@ -707,13 +707,14 @@ public class DaysOfTheWeekTest {
         Froilanda.eat(farmFactory.createChickenEgg());
         Assert.assertEquals(5,Froilanda.stomach.size());
 
+        int i = 0;
         for (CropRow cropRow : farmField){
-            Froilan.plant(farmFactory.createCornStalk(), cropRow);
+            Froilan.plant(farmFactory.createPotatoStalk(), cropRow, 3);
             for (Crop c : cropRow){
-                Assert.assertTrue(c instanceof CornStalk);
+                if (i == 2) {break;}
+                Assert.assertTrue(c instanceof PotatoStalk);
+                i++;
             }
         }
-
-
     }
 }

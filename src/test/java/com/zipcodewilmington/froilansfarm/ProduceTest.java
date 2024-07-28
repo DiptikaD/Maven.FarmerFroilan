@@ -18,6 +18,12 @@ public class ProduceTest {
     }
 
     @Test
+    public void PotatoStalkTest(){
+        Crop pstalk = new PotatoStalk();
+        Assert.assertTrue(pstalk instanceof Crop);
+    }
+
+    @Test
     public void NoYieldTomatoTest(){
         Tractor tractor = new Tractor();
         TomatoStalk tomatoStalk = new TomatoStalk();
@@ -28,6 +34,34 @@ public class ProduceTest {
     }
 
     @Test
+    public void YieldTomatoTest(){
+        Tractor tractor = new Tractor();
+        TomatoStalk tomatoStalk = new TomatoStalk();
+        tomatoStalk.fertilize();
+        tractor.harvest(tomatoStalk.yield());
+        Assert.assertEquals(1,tractor.harvested.size());
+    }
+
+    @Test
+    public void NoYieldPotatoTest(){
+        Tractor tractor = new Tractor();
+        PotatoStalk potatoStalk = new PotatoStalk();
+        potatoStalk.fertilize();
+        potatoStalk.defertilize();
+        tractor.harvest(potatoStalk.yield());
+        Assert.assertEquals(0,tractor.harvested.size());
+    }
+
+    @Test
+    public void YieldPotatoTest(){
+        Tractor tractor = new Tractor();
+        PotatoStalk potatoStalk = new PotatoStalk();
+        potatoStalk.fertilize();
+        tractor.harvest(potatoStalk.yield());
+        Assert.assertEquals(1,tractor.harvested.size());
+    }
+
+    @Test
     public void NoYieldEarCornTest(){
         Tractor tractor = new Tractor();
         CornStalk cornStalk = new CornStalk();
@@ -35,6 +69,15 @@ public class ProduceTest {
         cornStalk.defertilize();
         tractor.harvest(cornStalk.yield());
         Assert.assertEquals(0,tractor.harvested.size());
+    }
+
+    @Test
+    public void YieldEarCornTest(){
+        Tractor tractor = new Tractor();
+        CornStalk cornStalk = new CornStalk();
+        cornStalk.fertilize();
+        tractor.harvest(cornStalk.yield());
+        Assert.assertEquals(1,tractor.harvested.size());
     }
 
     @Test
