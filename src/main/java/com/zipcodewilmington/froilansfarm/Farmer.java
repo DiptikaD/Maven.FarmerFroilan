@@ -10,9 +10,6 @@ public class Farmer extends Person implements Botanist {
     @Override
     public Boolean plant(Crop crop, CropRow cropRow, int amountOfRows) {
         for (int i = 0; i < amountOfRows; i++){
-            if (i == 3){
-                break;
-            }
             cropRow.set(i, crop);
         }
         return true;
