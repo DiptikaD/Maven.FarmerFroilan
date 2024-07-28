@@ -7,10 +7,18 @@ import org.junit.Test;
 
 public class DaysOfTheWeekTest {
 
-    @Test
-    public void Monday(){
-        Farmer Froilan = new Farmer("Froilan");
-        Pilot Froilanda = new Pilot("Froilanda");
+    Farm farm;
+    FarmFactory farmFactory;
+    FarmAnimalFactory farmAnimalFactory;
+    CropDuster cropDuster;
+    Tractor tractor;
+    Tractor otherTractor;
+    Farmer froilan;
+    Pilot froilanda;
+    FarmField farmField;
+
+    @Before
+    public void generateFarm(){
 
         Farm farm = new Farm();
         FarmField farmField = new FarmField();
@@ -57,21 +65,31 @@ public class DaysOfTheWeekTest {
 
         farm.stables.get(0).add(farmAnimalFactory.createHorse());
 
-        Tractor tractor = new Tractor();
-        Tractor theOtherTractor = new Tractor();
-        CropDuster cropDuster = new CropDuster();
+        this.farm = farm;
+        this.farmFactory = farmFactory;
+        this.farmAnimalFactory = farmAnimalFactory;
+        this.cropDuster = new CropDuster();
+        this.tractor = new Tractor();
+        this.otherTractor = new Tractor();
+        this.froilan = new Farmer("Froilan");
+        this.froilanda = new Pilot("Froilanda");
+        this.farmField = farmField;
 
+    }
+
+    @Test
+    public void Monday(){
         //each day
 
         for (Stable stable : farm.stables){
             for (Horse horse : stable){
-                horse.mount(Froilan);
+                horse.mount(froilan);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilan);
+                horse.dismount(froilan);
                 Assert.assertEquals(0, horse.riders.size());
-                horse.mount(Froilanda);
+                horse.mount(froilanda);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilanda);
+                horse.dismount(froilanda);
                 Assert.assertEquals(0, horse.riders.size());
             }
         }
@@ -85,26 +103,26 @@ public class DaysOfTheWeekTest {
             }
         }
 
-        Froilan.eat(farmFactory.createEarCorn());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,Froilan.stomach.size());
+        froilan.eat(farmFactory.createEarCorn());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(8,froilan.stomach.size());
 
-        Froilanda.eat(farmFactory.createTomato());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,Froilanda.stomach.size());
+        froilanda.eat(farmFactory.createTomato());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createChickenEgg());
+        froilanda.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(5,froilanda.stomach.size());
 
         //monday specific
 
-        cropDuster.mount(Froilanda);
+        cropDuster.mount(froilanda);
 
         for (CropRow cropRow : farmField){
             cropDuster.fertilize(cropRow);
@@ -113,74 +131,23 @@ public class DaysOfTheWeekTest {
             }
         }
 
-        cropDuster.dismount(Froilanda);
+        cropDuster.dismount(froilanda);
     }
 
     @Test
     public void Tuesday(){
-        Farmer Froilan = new Farmer("Froilan");
-        Pilot Froilanda = new Pilot("Froilanda");
-
-        Farm farm = new Farm();
-        FarmField farmField = new FarmField();
-        FarmFactory farmFactory = new FarmFactory();
-        FarmAnimalFactory farmAnimalFactory = new FarmAnimalFactory();
-
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-
-        for (CropRow cropRow : farmField){
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createTomatoStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-        }
-
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-
-        for (ChickenCoop chickenCoop : farm.chickenCoops){
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-        }
-
-        farm.chickenCoops.get(0).remove(0);
-
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-
-        for(Stable stable : farm.stables){
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-        }
-
-        farm.stables.get(0).add(farmAnimalFactory.createHorse());
-
-        Tractor tractor = new Tractor();
-        Tractor theOtherTractor = new Tractor();
-        CropDuster cropDuster = new CropDuster();
 
         //each day
 
         for (Stable stable : farm.stables){
             for (Horse horse : stable){
-                horse.mount(Froilan);
+                horse.mount(froilan);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilan);
+                horse.dismount(froilan);
                 Assert.assertEquals(0, horse.riders.size());
-                horse.mount(Froilanda);
+                horse.mount(froilanda);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilanda);
+                horse.dismount(froilanda);
                 Assert.assertEquals(0, horse.riders.size());
             }
         }
@@ -194,24 +161,24 @@ public class DaysOfTheWeekTest {
             }
         }
 
-        Froilan.eat(farmFactory.createEarCorn());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,Froilan.stomach.size());
+        froilan.eat(farmFactory.createEarCorn());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(8,froilan.stomach.size());
 
-        Froilanda.eat(farmFactory.createTomato());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,Froilanda.stomach.size());
+        froilanda.eat(farmFactory.createTomato());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createChickenEgg());
+        froilanda.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(5,froilanda.stomach.size());
 
-        tractor.mount(Froilan);
+        tractor.mount(froilan);
 
         for (CropRow cropRow : farmField){
             for (Crop c : cropRow){
@@ -219,76 +186,24 @@ public class DaysOfTheWeekTest {
             }
         }
 
-        tractor.dismount(Froilan);
+        tractor.dismount(froilan);
 
         Assert.assertEquals(25, tractor.harvested.size());
     }
 
     @Test
     public void Wednesday(){
-        Farmer Froilan = new Farmer("Froilan");
-        Pilot Froilanda = new Pilot("Froilanda");
-
-        Farm farm = new Farm();
-        FarmField farmField = new FarmField();
-        FarmFactory farmFactory = new FarmFactory();
-        FarmAnimalFactory farmAnimalFactory = new FarmAnimalFactory();
-
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-
-        for (CropRow cropRow : farmField){
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createTomatoStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-        }
-
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-
-        for (ChickenCoop chickenCoop : farm.chickenCoops){
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-        }
-
-        farm.chickenCoops.get(0).remove(0);
-
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-
-        for(Stable stable : farm.stables){
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-        }
-
-        farm.stables.get(0).add(farmAnimalFactory.createHorse());
-
-        Tractor tractor = new Tractor();
-        Tractor theOtherTractor = new Tractor();
-        CropDuster cropDuster = new CropDuster();
-
         //each day
 
         for (Stable stable : farm.stables){
             for (Horse horse : stable){
-                horse.mount(Froilan);
+                horse.mount(froilan);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilan);
+                horse.dismount(froilan);
                 Assert.assertEquals(0, horse.riders.size());
-                horse.mount(Froilanda);
+                horse.mount(froilanda);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilanda);
+                horse.dismount(froilanda);
                 Assert.assertEquals(0, horse.riders.size());
             }
         }
@@ -302,90 +217,38 @@ public class DaysOfTheWeekTest {
             }
         }
 
-        Froilan.eat(farmFactory.createEarCorn());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,Froilan.stomach.size());
+        froilan.eat(farmFactory.createEarCorn());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(8,froilan.stomach.size());
 
-        Froilanda.eat(farmFactory.createTomato());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,Froilanda.stomach.size());
+        froilanda.eat(farmFactory.createTomato());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createChickenEgg());
+        froilanda.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(5,froilanda.stomach.size());
 
     }
 
     @Test
     public void Thursday(){
-        Farmer Froilan = new Farmer("Froilan");
-        Pilot Froilanda = new Pilot("Froilanda");
-
-        Farm farm = new Farm();
-        FarmField farmField = new FarmField();
-        FarmFactory farmFactory = new FarmFactory();
-        FarmAnimalFactory farmAnimalFactory = new FarmAnimalFactory();
-
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-
-        for (CropRow cropRow : farmField){
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createTomatoStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-        }
-
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-
-        for (ChickenCoop chickenCoop : farm.chickenCoops){
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-        }
-
-        farm.chickenCoops.get(0).remove(0);
-
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-
-        for(Stable stable : farm.stables){
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-        }
-
-        farm.stables.get(0).add(farmAnimalFactory.createHorse());
-
-        Tractor tractor = new Tractor();
-        Tractor theOtherTractor = new Tractor();
-        CropDuster cropDuster = new CropDuster();
-
         //each day
 
         for (Stable stable : farm.stables){
             for (Horse horse : stable){
-                horse.mount(Froilan);
+                horse.mount(froilan);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilan);
+                horse.dismount(froilan);
                 Assert.assertEquals(0, horse.riders.size());
-                horse.mount(Froilanda);
+                horse.mount(froilanda);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilanda);
+                horse.dismount(froilanda);
                 Assert.assertEquals(0, horse.riders.size());
             }
         }
@@ -399,90 +262,38 @@ public class DaysOfTheWeekTest {
             }
         }
 
-        Froilan.eat(farmFactory.createEarCorn());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,Froilan.stomach.size());
+        froilan.eat(farmFactory.createEarCorn());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(8,froilan.stomach.size());
 
-        Froilanda.eat(farmFactory.createTomato());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,Froilanda.stomach.size());
+        froilanda.eat(farmFactory.createTomato());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createChickenEgg());
+        froilanda.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(5,froilanda.stomach.size());
 
     }
 
     @Test
     public void Friday(){
-        Farmer Froilan = new Farmer("Froilan");
-        Pilot Froilanda = new Pilot("Froilanda");
-
-        Farm farm = new Farm();
-        FarmField farmField = new FarmField();
-        FarmFactory farmFactory = new FarmFactory();
-        FarmAnimalFactory farmAnimalFactory = new FarmAnimalFactory();
-
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-
-        for (CropRow cropRow : farmField){
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createTomatoStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-        }
-
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-
-        for (ChickenCoop chickenCoop : farm.chickenCoops){
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-        }
-
-        farm.chickenCoops.get(0).remove(0);
-
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-
-        for(Stable stable : farm.stables){
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-        }
-
-        farm.stables.get(0).add(farmAnimalFactory.createHorse());
-
-        Tractor tractor = new Tractor();
-        Tractor theOtherTractor = new Tractor();
-        CropDuster cropDuster = new CropDuster();
-
         //each day
 
         for (Stable stable : farm.stables){
             for (Horse horse : stable){
-                horse.mount(Froilan);
+                horse.mount(froilan);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilan);
+                horse.dismount(froilan);
                 Assert.assertEquals(0, horse.riders.size());
-                horse.mount(Froilanda);
+                horse.mount(froilanda);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilanda);
+                horse.dismount(froilanda);
                 Assert.assertEquals(0, horse.riders.size());
             }
         }
@@ -496,90 +307,38 @@ public class DaysOfTheWeekTest {
             }
         }
 
-        Froilan.eat(farmFactory.createEarCorn());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,Froilan.stomach.size());
+        froilan.eat(farmFactory.createEarCorn());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(8,froilan.stomach.size());
 
-        Froilanda.eat(farmFactory.createTomato());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,Froilanda.stomach.size());
+        froilanda.eat(farmFactory.createTomato());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createChickenEgg());
+        froilanda.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(5,froilanda.stomach.size());
 
     }
 
     @Test
     public void Saturday(){
-        Farmer Froilan = new Farmer("Froilan");
-        Pilot Froilanda = new Pilot("Froilanda");
-
-        Farm farm = new Farm();
-        FarmField farmField = new FarmField();
-        FarmFactory farmFactory = new FarmFactory();
-        FarmAnimalFactory farmAnimalFactory = new FarmAnimalFactory();
-
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-
-        for (CropRow cropRow : farmField){
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createTomatoStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-        }
-
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-
-        for (ChickenCoop chickenCoop : farm.chickenCoops){
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-        }
-
-        farm.chickenCoops.get(0).remove(0);
-
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-
-        for(Stable stable : farm.stables){
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-        }
-
-        farm.stables.get(0).add(farmAnimalFactory.createHorse());
-
-        Tractor tractor = new Tractor();
-        Tractor theOtherTractor = new Tractor();
-        CropDuster cropDuster = new CropDuster();
-
         //each day
 
         for (Stable stable : farm.stables){
             for (Horse horse : stable){
-                horse.mount(Froilan);
+                horse.mount(froilan);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilan);
+                horse.dismount(froilan);
                 Assert.assertEquals(0, horse.riders.size());
-                horse.mount(Froilanda);
+                horse.mount(froilanda);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilanda);
+                horse.dismount(froilanda);
                 Assert.assertEquals(0, horse.riders.size());
             }
         }
@@ -593,90 +352,38 @@ public class DaysOfTheWeekTest {
             }
         }
 
-        Froilan.eat(farmFactory.createEarCorn());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,Froilan.stomach.size());
+        froilan.eat(farmFactory.createEarCorn());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(8,froilan.stomach.size());
 
-        Froilanda.eat(farmFactory.createTomato());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,Froilanda.stomach.size());
+        froilanda.eat(farmFactory.createTomato());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createChickenEgg());
+        froilanda.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(5,froilanda.stomach.size());
 
     }
 
     @Test
     public void Sunday(){
-        Farmer Froilan = new Farmer("Froilan");
-        Pilot Froilanda = new Pilot("Froilanda");
-
-        Farm farm = new Farm();
-        FarmField farmField = new FarmField();
-        FarmFactory farmFactory = new FarmFactory();
-        FarmAnimalFactory farmAnimalFactory = new FarmAnimalFactory();
-
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-        farmField.add(farmFactory.createCropRow());
-
-        for (CropRow cropRow : farmField){
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createTomatoStalk());
-            cropRow.add(farmFactory.createTomatoStalk());
-            cropRow.add(farmFactory.createCornStalk());
-            cropRow.add(farmFactory.createCornStalk());
-        }
-
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-        farm.chickenCoops.add(farmFactory.createChickenCoop());
-
-        for (ChickenCoop chickenCoop : farm.chickenCoops){
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-            chickenCoop.add(farmAnimalFactory.createChicken());
-        }
-
-        farm.chickenCoops.get(0).remove(0);
-
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-        farm.stables.add(farmFactory.createStable());
-
-        for(Stable stable : farm.stables){
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-            stable.add(farmAnimalFactory.createHorse());
-        }
-
-        farm.stables.get(0).add(farmAnimalFactory.createHorse());
-
-        Tractor tractor = new Tractor();
-        Tractor theOtherTractor = new Tractor();
-        CropDuster cropDuster = new CropDuster();
-
         //each day
 
         for (Stable stable : farm.stables){
             for (Horse horse : stable){
-                horse.mount(Froilan);
+                horse.mount(froilan);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilan);
+                horse.dismount(froilan);
                 Assert.assertEquals(0, horse.riders.size());
-                horse.mount(Froilanda);
+                horse.mount(froilanda);
                 Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(Froilanda);
+                horse.dismount(froilanda);
                 Assert.assertEquals(0, horse.riders.size());
             }
         }
@@ -690,26 +397,26 @@ public class DaysOfTheWeekTest {
             }
         }
 
-        Froilan.eat(farmFactory.createEarCorn());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createTomato());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,Froilan.stomach.size());
+        froilan.eat(farmFactory.createEarCorn());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createTomato());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        froilan.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(8,froilan.stomach.size());
 
-        Froilanda.eat(farmFactory.createTomato());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createEarCorn());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,Froilanda.stomach.size());
+        froilanda.eat(farmFactory.createTomato());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createEarCorn());
+        froilanda.eat(farmFactory.createChickenEgg());
+        froilanda.eat(farmFactory.createChickenEgg());
+        Assert.assertEquals(5,froilanda.stomach.size());
 
-        Froilan.plant(farmFactory.createPotatoStalk(), farmField.get(0), 1);
-        Froilan.plant(farmFactory.createCornStalk(), farmField.get(1), 1);
-        Froilan.plant(farmFactory.createTomatoStalk(), farmField.get(2),1);
+        froilan.plant(farmFactory.createPotatoStalk(), farmField.get(0), 1);
+        froilan.plant(farmFactory.createCornStalk(), farmField.get(1), 1);
+        froilan.plant(farmFactory.createTomatoStalk(), farmField.get(2),1);
         CropRow c1 = farmField.get(0);
         CropRow c2 = farmField.get(1);
         CropRow c3 = farmField.get(2);
