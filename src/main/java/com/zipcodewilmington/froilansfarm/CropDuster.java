@@ -9,6 +9,9 @@ public class CropDuster extends FarmVehicle implements AirCraft  {
     }
 
     public Boolean fertilize(CropRow cropRow) {
+        for (Crop c : cropRow){
+            c.fertilize();
+        }
         cropRow.fertilize();
         return true;
     }
