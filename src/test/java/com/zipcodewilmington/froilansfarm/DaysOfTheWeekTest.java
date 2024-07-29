@@ -78,9 +78,8 @@ public class DaysOfTheWeekTest {
     }
 
     @Test
-    public void Monday(){
+    public void dailyRoutine(){
         //each day
-
         for (Stable stable : farm.stables){
             for (Horse horse : stable){
                 horse.mount(froilan);
@@ -120,8 +119,13 @@ public class DaysOfTheWeekTest {
         froilanda.eat(farmFactory.createChickenEgg());
         Assert.assertEquals(5,froilanda.stomach.size());
 
-        //monday specific
+    }
 
+    @Test
+    public void Monday(){
+        dailyRoutine();
+
+        //monday specific
         cropDuster.mount(froilanda);
 
         for (CropRow cropRow : farmField){
@@ -136,47 +140,7 @@ public class DaysOfTheWeekTest {
 
     @Test
     public void Tuesday(){
-
-        //each day
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.mount(froilan);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilan);
-                Assert.assertEquals(0, horse.riders.size());
-                horse.mount(froilanda);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilanda);
-                Assert.assertEquals(0, horse.riders.size());
-            }
-        }
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                Assert.assertEquals(3,horse.stomach.size());
-            }
-        }
-
-        froilan.eat(farmFactory.createEarCorn());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,froilan.stomach.size());
-
-        froilanda.eat(farmFactory.createTomato());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createChickenEgg());
-        froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,froilanda.stomach.size());
+        dailyRoutine();
 
         tractor.mount(froilan);
 
@@ -193,227 +157,27 @@ public class DaysOfTheWeekTest {
 
     @Test
     public void Wednesday(){
-        //each day
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.mount(froilan);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilan);
-                Assert.assertEquals(0, horse.riders.size());
-                horse.mount(froilanda);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilanda);
-                Assert.assertEquals(0, horse.riders.size());
-            }
-        }
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                Assert.assertEquals(3,horse.stomach.size());
-            }
-        }
-
-        froilan.eat(farmFactory.createEarCorn());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,froilan.stomach.size());
-
-        froilanda.eat(farmFactory.createTomato());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createChickenEgg());
-        froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,froilanda.stomach.size());
-
+       dailyRoutine();
     }
 
     @Test
     public void Thursday(){
-        //each day
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.mount(froilan);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilan);
-                Assert.assertEquals(0, horse.riders.size());
-                horse.mount(froilanda);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilanda);
-                Assert.assertEquals(0, horse.riders.size());
-            }
-        }
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                Assert.assertEquals(3,horse.stomach.size());
-            }
-        }
-
-        froilan.eat(farmFactory.createEarCorn());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,froilan.stomach.size());
-
-        froilanda.eat(farmFactory.createTomato());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createChickenEgg());
-        froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,froilanda.stomach.size());
-
+        dailyRoutine();
     }
 
     @Test
     public void Friday(){
-        //each day
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.mount(froilan);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilan);
-                Assert.assertEquals(0, horse.riders.size());
-                horse.mount(froilanda);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilanda);
-                Assert.assertEquals(0, horse.riders.size());
-            }
-        }
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                Assert.assertEquals(3,horse.stomach.size());
-            }
-        }
-
-        froilan.eat(farmFactory.createEarCorn());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,froilan.stomach.size());
-
-        froilanda.eat(farmFactory.createTomato());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createChickenEgg());
-        froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,froilanda.stomach.size());
-
+       dailyRoutine();
     }
 
     @Test
     public void Saturday(){
-        //each day
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.mount(froilan);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilan);
-                Assert.assertEquals(0, horse.riders.size());
-                horse.mount(froilanda);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilanda);
-                Assert.assertEquals(0, horse.riders.size());
-            }
-        }
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                Assert.assertEquals(3,horse.stomach.size());
-            }
-        }
-
-        froilan.eat(farmFactory.createEarCorn());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,froilan.stomach.size());
-
-        froilanda.eat(farmFactory.createTomato());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createChickenEgg());
-        froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,froilanda.stomach.size());
-
+        dailyRoutine();
     }
 
     @Test
     public void Sunday(){
-        //each day
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.mount(froilan);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilan);
-                Assert.assertEquals(0, horse.riders.size());
-                horse.mount(froilanda);
-                Assert.assertEquals(1, horse.riders.size());
-                horse.dismount(froilanda);
-                Assert.assertEquals(0, horse.riders.size());
-            }
-        }
-
-        for (Stable stable : farm.stables){
-            for (Horse horse : stable){
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                horse.eat(farmFactory.createEarCorn());
-                Assert.assertEquals(3,horse.stomach.size());
-            }
-        }
-
-        froilan.eat(farmFactory.createEarCorn());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createTomato());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        froilan.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(8,froilan.stomach.size());
-
-        froilanda.eat(farmFactory.createTomato());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createEarCorn());
-        froilanda.eat(farmFactory.createChickenEgg());
-        froilanda.eat(farmFactory.createChickenEgg());
-        Assert.assertEquals(5,froilanda.stomach.size());
-
+        dailyRoutine();
         froilan.plant(farmFactory.createPotatoStalk(), farmField.get(0), 1);
         froilan.plant(farmFactory.createCornStalk(), farmField.get(1), 1);
         froilan.plant(farmFactory.createTomatoStalk(), farmField.get(2),1);
